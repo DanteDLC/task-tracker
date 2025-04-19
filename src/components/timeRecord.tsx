@@ -38,11 +38,11 @@ interface TimeRecord {
   date: string;
   activity: string;
   timeStarted: string;
-  timeOut: stringm;
+  timeOut: string;
   totalHours: number;
 }
 
-export default function TimeTracker() {
+export default function TimeRecord() {
   const [records, setRecords] = useState<TimeRecord[]>([]);
   const [currentActivity, setCurrentActivity] = useState<string>("");
   const [customActivity, setCustomActivity] = useState<string>("");
@@ -153,7 +153,7 @@ export default function TimeTracker() {
             )}
 
             <Button
-              className="mt-4 w-full"
+              className="mt-4 w-full hover:cursor-pointer"
               onClick={isTracking ? stopTracking : startTracking}
               disabled={
                 (!currentActivity && !customActivity) ||
