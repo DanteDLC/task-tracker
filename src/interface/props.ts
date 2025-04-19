@@ -11,3 +11,7 @@ export interface NewPositionFormProps {
 export interface NewEmployeeFormProps {
   positions: positionsType[];
 }
+
+export interface timeRecordProps {
+  activities: string[];
+}

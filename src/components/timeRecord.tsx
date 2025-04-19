@@ -22,16 +22,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Play, Square, Plus, Trash2 } from "lucide-react";
-
-// Predefined activities
-const PREDEFINED_ACTIVITIES = [
-  "Following and unfollowing accounts",
-  "Sending welcome messages and follow-ups",
-  "Writing Guide book",
-  "Sending follow-up to Bali",
-  "Sending emails to new prospects",
-  "Short break",
-];
+import { timeRecordProps } from "@/interface/props";
 
 interface TimeRecord {
   id: string;
@@ -42,7 +33,9 @@ interface TimeRecord {
   totalHours: number;
 }
 
-export default function TimeRecord() {
+export const TimeRecord = ({ activities }: timeRecordProps) => {
+  console.log("activities", activities);
+
   const [records, setRecords] = useState<TimeRecord[]>([]);
   const [currentActivity, setCurrentActivity] = useState<string>("");
   const [customActivity, setCustomActivity] = useState<string>("");
@@ -125,7 +118,7 @@ export default function TimeRecord() {
                   <SelectValue placeholder="Select an activity" />
                 </SelectTrigger>
                 <SelectContent>
-                  {PREDEFINED_ACTIVITIES.map((activity) => (
+                  {activities.map((activity) => (
                     <SelectItem key={activity} value={activity}>
                       {activity}
                     </SelectItem>
@@ -241,4 +234,6 @@ export default function TimeRecord() {
       </div>
     </div>
   );
-}
+};
+
+export default TimeRecord;
