@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { auth } from "./auth";
 
 export async function middleware(request: NextRequest) {
-  const protectedRoutes = ["/landing-page"];
+  const protectedRoutes = ["/tools"];
   const isProtected = protectedRoutes.some((route) =>
     request.nextUrl.pathname.startsWith(route),
   );
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
   });
   // console.log("middleware", token);
   if (token && request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL("/landing-page", request.url));
+    return NextResponse.redirect(new URL("/tools/landing-page", request.url));
   }
   if (!token && isProtected) {
     return NextResponse.redirect(new URL("/", request.url));

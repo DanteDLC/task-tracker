@@ -21,7 +21,7 @@ export async function connectToDatabase() {
   if (!cached.promise) {
     cached.promise = mongoose
       .connect(MONGODB_URI, {
-        dbName: "database-name",
+        dbName: "task-tracker",
         bufferCommands: false,
       })
       .then((mongoose) => mongoose);

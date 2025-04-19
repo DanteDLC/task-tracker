@@ -13,10 +13,10 @@ export default async function TopBar() {
       {/* ROUTES */}
       <div className="flex items-center justify-start gap-4">
         <Link
-          href="/onboarding/new-employee"
+          href="/tools/time-record"
           className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-800 transition hover:bg-gray-100"
         >
-          New Employee
+          Time Record
         </Link>
         <Link
           href="/onboarding/new-position"

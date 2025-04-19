@@ -1,12 +1,11 @@
 import NextAuth from "next-auth";
-import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import client from "./lib/db";
 import { User } from "./models/User";
 import { connectToDatabase } from "./lib/mongoose";
-
+import GoogleProvider from "next-auth/providers/google";
 export const {
   handlers: { GET, POST },
   signIn,
@@ -55,6 +54,11 @@ export const {
         };
       },
     }),
+    GoogleProvider({
+      id: "google",
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    })
   ],
   callbacks: {
     async session({ session, token }) {
